@@ -9,3 +9,5 @@ jobs:
     steps:
      - name: print
        run: echo "Hello"
+     - name: print
+       run: echo "Hello"
