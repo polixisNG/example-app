@@ -21,4 +21,4 @@ jobs:
       - name: docker push image
         run: |
           docker tag exampleapp:1 ghcr.io/example-app/app:latest
-          docker push ghcr.io/example/app:latest
+          docker push ghcr.io/example-app/app:latest
