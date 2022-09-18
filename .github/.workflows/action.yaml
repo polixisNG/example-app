@@ -1,0 +1,11 @@
+name: Example message
+
+on:
+  push:
+
+jobs:
+  kjghvjv:
+    runs-on: ubuntu-latest
+    steps:
+     - name: print
+       run: echo "Hello"
