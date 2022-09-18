@@ -2,12 +2,26 @@ name: Example message
 
 on:
   push:
+    - "master"
+
+description: app
 
 jobs:
-  kjghvjv:
+  app-build:
     runs-on: ubuntu-latest
     steps:
-     - name: print
-       run: echo "Hello"
-     - name: print
-       run: echo "Hello"
+      - name: login github registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v3
+
+      - name: docker build
+        run: docker build -t exampleapp:1 .
+
+      - name: docker push image
+        run: |
+          docker tag exampleapp:1 ghcr.io/example/app:latest
+          docker push ghcr.io/example/app:latest
